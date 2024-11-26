@@ -1,8 +1,9 @@
-**This is the template README. Please update this with project specific content.**
 
 # mdtp-pets-ui-tests
 
-<SERVICE_NAME> UI journey tests.
+MDTP Pets UI journey tests.
+
+This is a Dummy service test pack which is to provide examples for Testing UI.
 
 ## Pre-requisites
 
