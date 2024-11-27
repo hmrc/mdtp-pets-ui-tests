@@ -52,6 +52,12 @@ Format all project files as follows:
 sbt scalafmtAll
 ```
 
+Format all project and sbt/scala files at the same time as follows:
+
+```bash
+sbt scalafmtSbt scalafmtAll
+```
+
 ## License
 
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").

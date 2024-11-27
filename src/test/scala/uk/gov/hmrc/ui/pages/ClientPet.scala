@@ -20,12 +20,15 @@ import org.openqa.selenium.By
 
 object ClientPet extends BasePage {
 
-  private val resultOutcome: By = By.id("resultOutcome")
-
-  val useSetVATFlatRate: String    = "You can use the 16.5% VAT flat rate"
-  val useUniqueVATFlatRate: String = "You can use the VAT flat rate for your business type"
-
-  def outcome(): String =
-    getText(resultOutcome)
+  private val inputField: By = By.id("event-name")
+  val value1 = "answers[journey1][pet-preference]-1"
+  val value2 = "answers[journey1][pet-preference]-2"
+  def submit(value: String): Unit = {
+    val radioAnswer: String = if value == "cat" {
+      value1
+    } else  value2
+    sendKeys(inputField, radioAnswer)
+    click(continueButton)
+  }
 
 }

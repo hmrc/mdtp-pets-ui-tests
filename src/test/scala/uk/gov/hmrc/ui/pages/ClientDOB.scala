@@ -20,12 +20,16 @@ import org.openqa.selenium.By
 
 object ClientDOB extends BasePage {
 
-  private val resultOutcome: By = By.id("resultOutcome")
+  private val inputDayField: By   = By.id("passport-issued-day")
+  private val inputMonthField: By = By.id("passport-issued-month")
+  private val inputYearField: By  = By.id("passport-issued-year")
 
-  val useSetVATFlatRate: String    = "You can use the 16.5% VAT flat rate"
-  val useUniqueVATFlatRate: String = "You can use the VAT flat rate for your business type"
-
-  def outcome(): String =
-    getText(resultOutcome)
+  def submit(value: String): Unit = {
+    val date = value.split("/")
+    sendKeys(inputDayField, s"${date(0)}")
+    sendKeys(inputMonthField, s"${date(1)}")
+    sendKeys(inputYearField, s"${date(2)}")
+    click(continueButton)
+  }
 
 }

@@ -16,77 +16,25 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.pages.ClientName
+
 class RequestPetJourneySpec extends BaseSpec {
 
-  private val result          = Name
+  private val clientName = ClientName
 
   Feature("Check VAT flat rate") {
 
     Scenario("User pays annually and is a limited cost business") {
 
       Given("my VAT return period is annual")
-      vatReturnPeriod.goTo()
-      vatReturnPeriod.submit("annually")
+      clientName.goTo()
+      clientName.submit("Test Person")
 
       And("my turnover for the year is £1000")
-      turnover.submit("1000")
 
       When("my cost of goods for the year is £999")
-      costOfGoods.submit("999")
 
       Then("I can use the 16.5% VAT flat rate")
-      result.outcome() should be(result.useSetVATFlatRate)
-
-    }
-
-    Scenario("User pays annually and is not a limited cost business") {
-
-      Given("my VAT return period is annual")
-      vatReturnPeriod.goTo()
-      vatReturnPeriod.submit("annually")
-
-      And("my turnover for the year is £1000")
-      turnover.submit("1000")
-
-      When("my cost of goods for the year is £1000")
-      costOfGoods.submit("1000")
-
-      Then("I can use the VAT flat rate")
-      result.outcome() should be(result.useUniqueVATFlatRate)
-
-    }
-
-    Scenario("User pays quarterly and is a limited cost business") {
-
-      Given("my VAT return period is quarterly")
-      vatReturnPeriod.goTo()
-      vatReturnPeriod.submit("quarterly")
-
-      And("my turnover for the quarter is £1000")
-      turnover.submit("1000")
-
-      When("my cost of goods for the quarter is £249")
-      costOfGoods.submit("249")
-
-      Then("I can use the 16.5% VAT flat rate")
-      result.outcome() should be(result.useSetVATFlatRate)
-
-    }
-
-    Scenario("User pays quarterly and is not a limited cost business") {
-
-      Given("my VAT return period is quarterly")
-      vatReturnPeriod.goTo()
-      vatReturnPeriod.submit("quarterly")
-
-      And("my turnover for the quarter is £1000")
-      turnover.submit("1000")
-
-      When("my cost of goods for the quarter is £250")
-      costOfGoods.submit("250")
-
-      Then("I can use the VAT flat rate")
-      result.outcome() should be(result.useUniqueVATFlatRate)
 
     }
 

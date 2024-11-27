@@ -17,15 +17,22 @@
 package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.configuration.TestEnvironment
 
 object ClientName extends BasePage {
 
-  private val resultOutcome: By = By.id("resultOutcome")
+  private val url: String = TestEnvironment.url("Example-UI-Journey-Tests-Prototype") + "/text-input?journey=1&step=0"
 
-  val useSetVATFlatRate: String    = "You can use the 16.5% VAT flat rate"
-  val useUniqueVATFlatRate: String = "You can use the VAT flat rate for your business type"
+  def goTo(): Unit =
+    get(url)
 
-  def outcome(): String =
-    getText(resultOutcome)
+  val nameLabel = "What is your name?"
+
+  private val inputField: By = By.id("event-name")
+
+  def submit(value: String): Unit = {
+    sendKeys(inputField, value)
+    click(continueButton)
+  }
 
 }

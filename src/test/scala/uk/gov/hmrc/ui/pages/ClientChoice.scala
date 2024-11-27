@@ -14,30 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.specs
+package uk.gov.hmrc.ui.pages
 
-import uk.gov.hmrc.ui.pages.ClientName
+import org.openqa.selenium.By
 
-class SignUpJourneySpec extends BaseSpec {
+object ClientChoice extends BasePage {
 
-  private val clientName = ClientName
+  private val inputField: By = By.id("event-name")
 
-  Feature("Check VAT flat rate") {
-
-    Scenario("User pays annually and is a limited cost business") {
-
-      Given("my VAT return period is annual")
-      clientName.goTo()
-      clientName.submit("Test Person")
-
-      And("my turnover for the year is £1000")
-
-      When("my cost of goods for the year is £999")
-
-      Then("I can use the 16.5% VAT flat rate")
-
-    }
-
+  def submit(value: String): Unit = {
+    sendKeys(inputField, value)
+    click(continueButton)
   }
 
 }

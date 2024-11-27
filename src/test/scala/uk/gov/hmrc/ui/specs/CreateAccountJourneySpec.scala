@@ -16,45 +16,69 @@
 
 package uk.gov.hmrc.ui.specs
 
-import uk.gov.hmrc.ui.pages.{ClientName,ClientDOB,ClientPet,ClientUpload,ClientAddress,ClientConfirmation,ClientEmail}
+import uk.gov.hmrc.ui.pages.{ClientAddress, ClientChoice, ClientConfirmation, ClientDOB, ClientEmail, ClientName, ClientUpload}
 
 class CreateAccountJourneySpec extends BaseSpec {
 
-  private val result          = Name
+  private val clientName         = ClientName
+  private val clientEmail        = ClientEmail
+  private val clientAddress      = ClientAddress
+  private val clientDOB          = ClientDOB
+  private val clientUpload       = ClientUpload
+  private val clientChoice       = ClientChoice
+  private val clientConfirmation = ClientConfirmation
 
   Feature("Create an Account") {
 
-    Scenario("User creates an account to use the service and is a dog lover") {
+    Scenario("User creates an account to use the service and is a cat person") {
 
-      Given("my VAT return period is annual")
-      vatReturnPeriod.goTo()
-      vatReturnPeriod.submit("annually")
+      Given("my Name is Test Person")
+      clientName.goTo()
+      clientName.submit("Test Person")
 
-      And("my turnover for the year is £1000")
-      turnover.submit("1000")
+      Then("my email is test@test.com")
+      clientEmail.submit("test@test.com")
 
-      When("my cost of goods for the year is £999")
-      costOfGoods.submit("999")
+      Then("my location is Testford")
+      clientAddress.submit("Testford")
 
-      Then("I can use the 16.5% VAT flat rate")
-      result.outcome() should be(result.useSetVATFlatRate)
+      Then("my date of birth is 1/1/2001")
+      clientDOB.submit("1/1/2001")
+
+      Then("my file is uploaded")
+      clientUpload.submit("TestFile")
+
+      When("i like cats")
+      clientChoice.submit("Cats")
+
+      Then("my confirmation page is displayed")
+      clientConfirmation.outcome()
 
     }
 
-    Scenario("User creates an account to use the service and is a cat lover") {
+    Scenario("User creates an account to use the service and is a dog person") {
 
       Given("my VAT return period is annual")
-      vatReturnPeriod.goTo()
-      vatReturnPeriod.submit("annually")
+      clientName.goTo()
+      clientName.submit("Test Two Person")
 
-      And("my turnover for the year is £1000")
-      turnover.submit("1000")
+      Then("my email is test@test.com")
+      clientEmail.submit("test@test.com")
 
-      When("my cost of goods for the year is £999")
-      costOfGoods.submit("999")
+      Then("my location is Testford")
+      clientAddress.submit("Testford")
 
-      Then("I can use the 16.5% VAT flat rate")
-      result.outcome() should be(result.useSetVATFlatRate)
+      Then("my date of birth is 1/1/2001")
+      clientDOB.submit("1/1/2001")
+
+      Then("my file is uploaded")
+      clientUpload.submit("TestFile")
+
+      When("i like dogs")
+      clientChoice.submit("dogs")
+
+      Then("my confirmation page is displayed")
+      clientConfirmation.outcome()
 
     }
 

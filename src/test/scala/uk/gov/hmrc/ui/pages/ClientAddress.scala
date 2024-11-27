@@ -20,12 +20,14 @@ import org.openqa.selenium.By
 
 object ClientAddress extends BasePage {
 
-  private val resultOutcome: By = By.id("resultOutcome")
+  private val inputField: By = By.id("location")
 
-  val useSetVATFlatRate: String    = "You can use the 16.5% VAT flat rate"
-  val useUniqueVATFlatRate: String = "You can use the VAT flat rate for your business type"
+  def submit(value: String): Unit = {
+    sendKeys(inputField, value)
+    //TODO: understand why the locator is not clearing down before insertion and needs the button clicked twice
+    click(continueButton)
 
-  def outcome(): String =
-    getText(resultOutcome)
+    click(continueButton)
+  }
 
 }
