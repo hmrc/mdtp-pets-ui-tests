@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
 
-object Result extends BasePage {
+object ClientDOB extends BasePage {
 
   private val resultOutcome: By = By.id("resultOutcome")
 

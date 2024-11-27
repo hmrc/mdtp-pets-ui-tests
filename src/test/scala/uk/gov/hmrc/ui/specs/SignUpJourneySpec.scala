@@ -16,11 +16,9 @@
 
 package uk.gov.hmrc.ui.specs
 
-import uk.gov.hmrc.ui.pages.Result
+class SignUpJourneySpec extends BaseSpec {
 
-class LoginJourneySpec extends BaseSpec {
-
-  private val result          = Result
+  private val result          = Name
 
   Feature("Check VAT flat rate") {
 
