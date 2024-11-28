@@ -49,7 +49,7 @@ class CreateAccountJourneySpec extends BaseSpec {
       clientUpload.submit("TestFile")
 
       When("i like cats")
-      clientChoice.submit("Cats")
+      clientChoice.submit("cats")
 
       Then("my confirmation page is displayed")
       clientConfirmation.outcome()

@@ -24,7 +24,7 @@ object ClientAddress extends BasePage {
 
   def submit(value: String): Unit = {
     sendKeys(inputField, value)
-    //TODO: understand why the locator is not clearing down before insertion and needs the button clicked twice
+    // TODO: understand why the locator is not clearing down before insertion and needs the button clicked twice
     click(continueButton)
 
     click(continueButton)

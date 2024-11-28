@@ -20,14 +20,15 @@ import org.openqa.selenium.By
 
 object ClientPet extends BasePage {
 
-  private val inputField: By = By.id("event-name")
-  val value1 = "answers[journey1][pet-preference]-1"
-  val value2 = "answers[journey1][pet-preference]-2"
+  private val inputField: By      = By.id("event-name")
   def submit(value: String): Unit = {
-    val radioAnswer: String = if value == "cat" {
-      value1
-    } else  value2
-    sendKeys(inputField, radioAnswer)
+    val radioAnswer: String =
+      value match {
+        case "cats" => "answers[journey1][pet-preference]-1"
+        case "dogs" => "answers[journey1][pet-preference]-2"
+        case _      => "NO such pet"
+      }
+    selectByValue(inputField, radioAnswer)
     click(continueButton)
   }
 

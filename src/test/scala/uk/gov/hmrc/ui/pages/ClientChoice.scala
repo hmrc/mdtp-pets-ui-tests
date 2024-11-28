@@ -20,10 +20,17 @@ import org.openqa.selenium.By
 
 object ClientChoice extends BasePage {
 
-  private val inputField: By = By.id("event-name")
+  private val inputField: By = By.className("govuk-radios__item")
 
   def submit(value: String): Unit = {
-    sendKeys(inputField, value)
+    Thread.sleep(1000)
+    val radioAnswer: String =
+      value match {
+        case "cats" => "answers[journey1][pet-preference]-1"
+        case "dogs" => "answers[journey1][pet-preference]-2"
+        case _      => "NO such pet"
+      }
+    selectByValue(inputField, radioAnswer)
     click(continueButton)
   }
 

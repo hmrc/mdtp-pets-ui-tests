@@ -25,7 +25,9 @@ object ClientConfirmation extends BasePage {
   val useSetVATFlatRate: String    = "You can use the 16.5% VAT flat rate"
   val useUniqueVATFlatRate: String = "You can use the VAT flat rate for your business type"
 
-  def outcome(): String =
+  def outcome(): String = {
+    Thread.sleep(10000)
     getText(resultOutcome)
+  }
 
 }

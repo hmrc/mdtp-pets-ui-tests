@@ -22,9 +22,9 @@ object ClientUpload extends BasePage {
 
   private val inputField: By = By.id("file-upload-1")
 
-  def submit(value: String): Unit = {
-    sendKeys(inputField, value)
+  def submit(value: String): Unit =
+    // TODO: filename file somewhere store
+    // sendKeys(inputField, value)
     click(continueButton)
-  }
 
 }
