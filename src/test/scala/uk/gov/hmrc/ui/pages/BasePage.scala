@@ -16,6 +16,11 @@
 
 package uk.gov.hmrc.ui.pages
 
+import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.component.PageObject
 
-trait BasePage extends PageObject {}
+trait BasePage extends PageObject {
+  protected val baseUrl: String = TestEnvironment.url("example-ui-journey-tests-prototype")
+
+  def isCurrentPage: Boolean
+}

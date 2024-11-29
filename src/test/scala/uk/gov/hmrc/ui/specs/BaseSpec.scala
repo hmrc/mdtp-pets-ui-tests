@@ -20,6 +20,7 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.{BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
+import uk.gov.hmrc.ui.pages.BasePage
 
 trait BaseSpec
     extends AnyFeatureSpec
@@ -28,6 +29,9 @@ trait BaseSpec
     with BeforeAndAfterEach
     with Browser
     with ScreenshotOnFailure {
+
+  def on[P <: BasePage](page: P): Unit =
+    assert(page.isCurrentPage, s"Not currently on ${page.getClass.getSimpleName}")
 
   override def beforeEach(): Unit =
     startBrowser()
