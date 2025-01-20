@@ -23,3 +23,6 @@ yarn-debug.log
 yarn-error.log
 .metals/
 .vscode/
+.bloop/
+project/.bloop/
+project/metals.sbt
