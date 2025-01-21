@@ -51,6 +51,10 @@ Format all project files as follows:
 sbt scalafmtAll
 ```
 
+## Branches
+
+Currently, tests are in their own separate branches. Once a PR is raised, the tests against each branch are run in separate build jobs. This will likely change at some point.
+
 ## License
 
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
