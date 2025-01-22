@@ -6,6 +6,15 @@
 TEMP_FOLDER="tmp-test-script"
 REPO="example-ui-journey-tests-prototype"
 
+if command -V fnm; then
+    eval "$(fnm env)"
+    export FNM_NODE_DIST_MIRROR=https://artefacts.tax.service.gov.uk/artifactory/nodejs/dist
+    fnm install --lts
+    if [[ -n "${ARTIFACTORY_URI}" ]]; then
+        npm config set registry=\${ARTIFACTORY_URI}/api/npm/npmjs
+    fi
+fi 
+
 mkdir $TEMP_FOLDER
 cd $TEMP_FOLDER
 git clone https://github.com/hmrc/$REPO
