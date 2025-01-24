@@ -2,6 +2,7 @@
 
 # This file is not a recommended approach to testing
 # Please be aware that the contets of this script is not a solution to testing your prototypes
+export ZAP_FORWARD_PORTS='6001'
 
 TEMP_FOLDER="tmp-test-script"
 REPO="example-ui-journey-tests-prototype"
