@@ -2,6 +2,7 @@
 
 # This file is not a recommended approach to testing
 # Please be aware that the contets of this script is not a solution to testing your prototypes
+set -e
 export ZAP_FORWARD_PORTS='6001'
 
 TEMP_FOLDER="tmp-test-script"
@@ -21,4 +22,4 @@ cd $TEMP_FOLDER
 git clone https://github.com/hmrc/$REPO
 cd $REPO
 npm install
-echo y | npm run dev > /dev/null 2>&1 & # The ampersand (&) is needed to run this task in the background and the echo y is to skip through an analytics question
+echo y | PORT=6001 npm run dev >> ../../target/dast-reports/sbt-report 2>&1 & # The ampersand (&) is needed to run this task in the background and the echo y is to skip through an analytics question
