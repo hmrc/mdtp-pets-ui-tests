@@ -13,7 +13,7 @@ if command -V fnm; then
     export FNM_NODE_DIST_MIRROR=https://artefacts.tax.service.gov.uk/artifactory/nodejs/dist
     fnm install --lts
     if [[ -n "${ARTIFACTORY_URI}" ]]; then
-        npm config set registry=\${ARTIFACTORY_URI}/api/npm/npmjs
+        npm config set registry=https://artefacts.tax.service.gov.uk/artifactory/api/npm/npmjs
     fi
 fi 
 
