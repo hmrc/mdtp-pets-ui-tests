@@ -22,4 +22,4 @@ cd $TEMP_FOLDER
 git clone https://github.com/hmrc/$REPO
 cd $REPO
 npm install
-echo y | PORT=6001 npm run dev > ../../target/dast-reports/sbt-report & # The ampersand (&) is needed to run this task in the background and the echo y is to skip through an analytics question
+echo y | PORT=6001 npm run dev & # The ampersand (&) is needed to run this task in the background and the echo y is to skip through an analytics question
