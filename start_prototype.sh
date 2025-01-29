@@ -3,8 +3,6 @@
 # This file is not a recommended approach to testing
 # Please be aware that the contets of this script is not a solution to testing your prototypes
 set -e
-export ZAP_FORWARD_PORTS='6001'
-export SECURITY_ASSESSMENT=false
 
 TEMP_FOLDER="tmp-test-script"
 REPO="example-ui-journey-tests-prototype"
@@ -23,4 +21,4 @@ cd $TEMP_FOLDER
 git clone https://github.com/hmrc/$REPO
 cd $REPO
 npm install
-echo y | PORT=6001 npm run dev & # The ampersand (&) is needed to run this task in the background and the echo y is to skip through an analytics question
+echo y | npm run dev & # The ampersand (&) is needed to run this task in the background and the echo y is to skip through an analytics question
