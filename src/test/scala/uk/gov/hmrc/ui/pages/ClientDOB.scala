@@ -17,13 +17,19 @@
 package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.configuration.TestEnvironment
-import uk.gov.hmrc.selenium.component.PageObject
 
-trait BasePage extends PageObject {
+object ClientDOB extends BasePage {
 
-  protected val continueButton: By = By.className("govuk-button")
-  protected val baseUrl: String    = TestEnvironment.url("example-ui-journey-tests-prototype")
+  private val inputDayField: By   = By.id("passport-issued-day")
+  private val inputMonthField: By = By.id("passport-issued-month")
+  private val inputYearField: By  = By.id("passport-issued-year")
 
-  def isCurrentPage: Boolean = false
+  def submit(value: String): Unit = {
+    val date = value.split("/")
+    sendKeys(inputDayField, s"${date(0)}")
+    sendKeys(inputMonthField, s"${date(1)}")
+    sendKeys(inputYearField, s"${date(2)}")
+    click(continueButton)
+  }
+
 }

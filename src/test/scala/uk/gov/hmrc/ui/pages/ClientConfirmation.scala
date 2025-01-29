@@ -17,13 +17,16 @@
 package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.configuration.TestEnvironment
-import uk.gov.hmrc.selenium.component.PageObject
 
-trait BasePage extends PageObject {
+object ClientConfirmation extends BasePage {
 
-  protected val continueButton: By = By.className("govuk-button")
-  protected val baseUrl: String    = TestEnvironment.url("example-ui-journey-tests-prototype")
+  private val resultOutcome: By = By.className("govuk-panel__title")
 
-  def isCurrentPage: Boolean = false
+  val useSetVATFlatRate: String    = "You can use the 16.5% VAT flat rate"
+  val useUniqueVATFlatRate: String = "You can use the VAT flat rate for your business type"
+
+  def outcome(): String = {
+    getText(resultOutcome)
+  }
+
 }

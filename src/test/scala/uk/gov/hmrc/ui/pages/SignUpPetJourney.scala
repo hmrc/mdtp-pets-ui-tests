@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,13 @@
 package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.configuration.TestEnvironment
-import uk.gov.hmrc.selenium.component.PageObject
+import uk.gov.hmrc.ui.pages.signupyourpet.WhatIsYourPetsNamePage
 
-trait BasePage extends PageObject {
+object SignUpPetJourney extends BasePage {
+  override def isCurrentPage: Boolean = WhatIsYourPetsNamePage.isCurrentPage
 
-  protected val continueButton: By = By.className("govuk-button")
-  protected val baseUrl: String    = TestEnvironment.url("example-ui-journey-tests-prototype")
-
-  def isCurrentPage: Boolean = false
+  def start(): Unit = {
+    get(baseUrl)
+    click(By.linkText("Sign up your pet"))
+  }
 }

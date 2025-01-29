@@ -18,12 +18,21 @@ package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.configuration.TestEnvironment
-import uk.gov.hmrc.selenium.component.PageObject
 
-trait BasePage extends PageObject {
+object ClientName extends BasePage {
 
-  protected val continueButton: By = By.className("govuk-button")
-  protected val baseUrl: String    = TestEnvironment.url("example-ui-journey-tests-prototype")
+  private val url: String = TestEnvironment.url("example-ui-journey-tests-prototype") + "/text-input?journey=1&step=0"
 
-  def isCurrentPage: Boolean = false
+  def goTo(): Unit =
+    get(url)
+
+  val nameLabel = "What is your name?"
+
+  private val inputField: By = By.id("event-name")
+
+  def submit(value: String): Unit = {
+    sendKeys(inputField, value)
+    click(continueButton)
+  }
+
 }

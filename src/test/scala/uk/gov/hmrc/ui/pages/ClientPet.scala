@@ -17,13 +17,19 @@
 package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.configuration.TestEnvironment
-import uk.gov.hmrc.selenium.component.PageObject
 
-trait BasePage extends PageObject {
+object ClientPet extends BasePage {
 
-  protected val continueButton: By = By.className("govuk-button")
-  protected val baseUrl: String    = TestEnvironment.url("example-ui-journey-tests-prototype")
+  private val inputField: By      = By.id("event-name")
+  def submit(value: String): Unit = {
+    val radioAnswer: String =
+      value match {
+        case "cats" => "answers[journey1][pet-preference]-1"
+        case "dogs" => "answers[journey1][pet-preference]-2"
+        case _      => "NO such pet"
+      }
+    selectByValue(inputField, radioAnswer)
+    click(continueButton)
+  }
 
-  def isCurrentPage: Boolean = false
 }

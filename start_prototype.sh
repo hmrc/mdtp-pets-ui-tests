@@ -4,6 +4,7 @@
 # Please be aware that the contets of this script is not a solution to testing your prototypes
 set -e
 export ZAP_FORWARD_PORTS='6001'
+export SECURITY_ASSESSMENT=false
 
 TEMP_FOLDER="tmp-test-script"
 REPO="example-ui-journey-tests-prototype"

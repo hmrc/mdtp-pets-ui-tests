@@ -17,13 +17,17 @@
 package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.configuration.TestEnvironment
-import uk.gov.hmrc.selenium.component.PageObject
 
-trait BasePage extends PageObject {
+object ClientAddress extends BasePage {
 
-  protected val continueButton: By = By.className("govuk-button")
-  protected val baseUrl: String    = TestEnvironment.url("example-ui-journey-tests-prototype")
+  private val inputField: By = By.id("location")
 
-  def isCurrentPage: Boolean = false
+  def submit(value: String): Unit = {
+    sendKeys(inputField, value)
+    // TODO: understand why the locator is not clearing down before insertion and needs the button clicked twice
+    click(continueButton)
+
+    click(continueButton)
+  }
+
 }

@@ -25,7 +25,7 @@ object RequestAPet extends BasePage {
 
   private val url: String = TestEnvironment.url("example-ui-journey-tests-prototype") + "/radios?journey=3&step=0"
 
-  protected val continueButton: By = By.cssSelector(".govuk-button")
+  override protected val continueButton: By = By.cssSelector(".govuk-button")
 
   def goToRequestAPetService(): Unit =
     get(url)
