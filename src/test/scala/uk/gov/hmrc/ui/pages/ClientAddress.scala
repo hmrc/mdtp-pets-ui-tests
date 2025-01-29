@@ -22,12 +22,11 @@ object ClientAddress extends BasePage {
 
   private val inputField: By = By.id("location")
 
-  def submit(value: String): Unit = {
-    sendKeys(inputField, value)
+  def submit(value: String): Unit =
+    // sendKeys(inputField, value)
     // TODO: understand why the locator is not clearing down before insertion and needs the button clicked twice
-    click(continueButton)
+    // click(continueButton)
 
     click(continueButton)
-  }
 
 }
